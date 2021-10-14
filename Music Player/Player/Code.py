@@ -1,3 +1,4 @@
+import time
 from pygame import mixer
 
 def showMusic():
@@ -23,17 +24,24 @@ def playMusic(x):
     # print("Playing :", end=" ")
     mixer.music.play()
     c = input("Enter commands below:-\n")
-    while mixer.music.get_busy():
-        if c=='1':
-            mixer.music.pause()
-            cmd = input()
-            if cmd=='1':
-                mixer.music.unpause()
+    state = 0
+    pstate = 0
+    while mixer.music.get_busy() or pstate==0:
+        if c == '1':
+            state = ~state
+            # print(state)
+            if state!=0:
+                mixer.music.pause()
+                time.sleep(1)
+                pstate = 0
             else:
-                return cmd
-        else :
+                mixer.music.unpause()
+                pstate=1
+            c=input()
+        else:
             mixer.music.stop()
             return c;
+    print("Loop ahs eit")
 
 
 def main():
