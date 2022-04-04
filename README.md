@@ -1,5 +1,3 @@
 # MLHacks
 
--> Hi I am Tanishq Bhatt
-
--> This README.md is created for MLHacks
+-> This repo contains all the codes and projects I made in MLH Local Hack Day 2021
